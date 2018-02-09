@@ -6,7 +6,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-
+    <link href="/css/stylesheet.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"/>
 </head>
 <body>
 
@@ -48,17 +49,37 @@
     </div>
 </nav>
 
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
 
-    <p><b> Items: </b></p>
-    <p th:each="book :${books}">
-        <p th:text ="'Title: ' +${book.title}"> Title</p>
-        <p th:text ="'Availability: ' +${book.isAvailable}">Availabilty</p>
-        <p th:text ="'Author: ' +${book.author}">Author</p>
-        <p th:text ="'Year of Publication: ' +${book.year}"> Year</p>
-        <p th:text ="'ISBN Number: ' +${book.isbn}"> ISBN</p>
-        <p th:text ="'Image: ' +${book.image}"> Image</p>
+<div align="center">
+            <h1>All the Library Books:</h1>
+            <p th:each="book :${books}">
+                <div class="riripacifico"> Title</div>
+            <p th:text ="${book.title}"> Title</p>
+            <div class="riripacifico"> Availability</div>
+        <p th:text ="${book.availableStr}">Availabilty</p>
+         <div class="riripacifico"> Author </div>
+            <p th:text ="${book.author}">Author</p>
+         <div class="riripacifico"> Year of Publication</div>
+            <p th:text ="${book.year}"> Year</p>
+         <div class="riripacifico"> ISBN number</div>
+            <p th:text ="${book.isbn}"> ISBN</p>
+    <div class="riripacifico"> Image URL</div>
+    <img th:src="${book.image}"/>
+    <img th:if="${book.image == null}" th:src="@{/images/book2.jpg}"  />
+    <!--<img th:unless="${book.image}" th:src="${book.image}"  />-->
 
-    </p>
+    <!--<img th:src="${book.image}"/>-->
+
+             <!--<img th:src="@{/images/book.jpg}" />-->
+
+            </p>
+
+</div>
+
+        </div></div></div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

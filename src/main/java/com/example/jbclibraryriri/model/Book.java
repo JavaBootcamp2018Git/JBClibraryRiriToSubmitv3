@@ -28,12 +28,16 @@ public class Book {
 
     private boolean isAvailable;
 
+    private String availableStr;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     public Book() {
         isAvailable = true;
+        availableStr = "Available";
     }
 
     public String getTitle() {
@@ -85,6 +89,14 @@ public class Book {
     }
     public void setAvailable(boolean available) {
         isAvailable = available;
+    }
+
+    public String getAvailableStr() {
+        return availableStr;
+    }
+
+    public void setAvailableStr(String availableStr) {
+        this.availableStr = availableStr;
     }
 
     public long getId() {

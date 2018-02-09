@@ -50,9 +50,9 @@
 
 
 
-    <ul th:each="book : ${availables}">
-    <li th:inline="text">Title [[${book.getTitle()}]]</li>
-    <li th:inline="text"> Available [[${book.getIsAvailable()}]]</li>
+<ul th:each="book : ${availables}">
+    <li th:inline="text">Title: [[${book.title}]]</li>
+    <li th:inline="text"> Available: [[${book.availableStr}]]</li>
 
 
     <form th:action="@{/borrowbook}" th:method="post">

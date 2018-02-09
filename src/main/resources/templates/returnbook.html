@@ -48,8 +48,8 @@
     </div>
 </nav>
 <ul th:each="book : ${notavailables}">
-    <li th:inline="text">Title [[${book.getTitle()}]]</li>
-    <li th:inline="text">Avilable [[${book.getIsAvailable()}]]</li>
+    <li th:inline="text">Title: [[${book.getTitle()}]]</li>
+    <li th:inline="text">Avilablity: [[${book.availableStr}]]</li>
 
 
     <form th:action="@{/returnbook}" th:method="post">

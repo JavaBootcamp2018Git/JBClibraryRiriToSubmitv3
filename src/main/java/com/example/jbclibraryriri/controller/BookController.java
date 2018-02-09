@@ -54,7 +54,6 @@ public class BookController {
     @GetMapping("/borrowbook")
     public String borrowBook(Model model){
         model.addAttribute("availables", bookRepo.findByisAvailableTrue());
-
         return "borrowbook";
     }
 
@@ -62,11 +61,12 @@ public class BookController {
     //@PostMapping("/borrowbook")
     public String postBorrowBook(@RequestParam("id") Long id,Model model){
 
-
       Book toBeBorrowed = bookRepo.findOne(id);
       toBeBorrowed.setAvailable(false);
+      toBeBorrowed.setAvailableStr("Not Available");
       bookRepo.save(toBeBorrowed);
-      return "redirect:/";
+      model.addAttribute("availables", bookRepo.findByisAvailableTrue());
+      return "showborrowed";
     }
 
 
@@ -76,13 +76,15 @@ public class BookController {
         return "returnbook";
     }
 
-    //@PostMapping("/postreturnbook")
     @RequestMapping(value="/returnbook",method = RequestMethod.POST)
-    public String postReturnBook(@RequestParam("id") Long id, @ModelAttribute("book") Book book,Model model){
+    public String postReturnBook(@RequestParam("id") Long id, Model model){
+    //public String postReturnBook(@RequestParam("id") Long id, @ModelAttribute("book") Book book,Model model){
         Book returned = bookRepo.findOne(id);
         returned.setAvailable(true);
+        returned.setAvailableStr("Available");
         bookRepo.save(returned);
-        return "redirect:/";
+        model.addAttribute("notavailables", bookRepo.findByisAvailableFalse());
+        return "showreturn";
     }
 
 }
